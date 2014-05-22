@@ -30,10 +30,10 @@ public class Chat {
             OutputStreamWriter osw;
             String str = "Hello World";
             socket = new Socket("localhost", 4014);
-            osw = new OutputStreamWriter(socket.getOutputStream(), 
-            "UTF-8"
-            );
-                osw.write(str, 0, str.length());
+            osw = new OutputStreamWriter(socket.getOutputStream());
+                    //"UTF-8");
+            osw.write(s);
+            osw.flush();
         } catch (UnknownHostException ex) {
             Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
