@@ -96,15 +96,17 @@ public class SignIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.printf("username: %s\npassword: %s\n", username.getText(), password.getText());
-        if (username.getText().equals("1") && password.getText().equals("1")) {
-            this.dispose();
-            System.out.println("Here");
-            Frame f = new Frame();
-            f.setTitle("Skype");
-            f.setLocationRelativeTo(null);
-            f.show();
+        String name = username.getText();
+        String roomName = password.getText();
+        this.dispose();
+        if (!People.checkExists(roomName)) {
+            People.createRoom(roomName);
         }
+        People.insertUser(name, roomName);
+        Frame f = new Frame(roomName);
+        f.setTitle("Skype");
+        f.setLocationRelativeTo(null);
+        f.show();
     }//GEN-LAST:event_jButton1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
